@@ -1,104 +1,54 @@
-// pages/settings/settings.js
+// pages/settings/settings.js 极简扁平
 Page({
   data: {
     enableNotification: true,
-    darkMode: false
+    tripReminder: true
   },
 
-  onLoad: function(options) {
-    // 从本地存储加载设置
-    const notificationSetting = wx.getStorageSync('notificationSetting');
-    const darkModeSetting = wx.getStorageSync('darkModeSetting');
-    
+  onShow: function() {
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({ selected: 3 })
+    }
+  },
+
+  onLoad: function() {
+    const notificationSetting = wx.getStorageSync('notificationSetting')
+    const tripReminderSetting = wx.getStorageSync('tripReminderSetting')
+
     this.setData({
       enableNotification: notificationSetting !== undefined ? notificationSetting : true,
-      darkMode: darkModeSetting !== undefined ? darkModeSetting : false
-    });
+      tripReminder: tripReminderSetting !== undefined ? tripReminderSetting : true
+    })
   },
 
   toggleNotification: function(e) {
-    const enabled = e.detail.value;
-    this.setData({
-      enableNotification: enabled
-    });
-    
-    // 保存设置到本地存储
-    wx.setStorageSync('notificationSetting', enabled);
-    
-    wx.showToast({
-      title: enabled ? '通知已开启' : '通知已关闭',
-      icon: 'none'
-    });
+    const enabled = e.detail.value
+    this.setData({ enableNotification: enabled })
+    wx.setStorageSync('notificationSetting', enabled)
+    wx.showToast({ title: enabled ? '已开启' : '已关闭', icon: 'none' })
   },
 
-  toggleDarkMode: function(e) {
-    const enabled = e.detail.value;
-    this.setData({
-      darkMode: enabled
-    });
-    
-    // 保存设置到本地存储
-    wx.setStorageSync('darkModeSetting', enabled);
-    
-    wx.showToast({
-      title: enabled ? '深色模式已开启' : '深色模式已关闭',
-      icon: 'none'
-    });
+  toggleTripReminder: function(e) {
+    const enabled = e.detail.value
+    this.setData({ tripReminder: enabled })
+    wx.setStorageSync('tripReminderSetting', enabled)
+    wx.showToast({ title: enabled ? '已开启' : '已关闭', icon: 'none' })
+  },
+
+  goToPassengers: function() {
+    wx.showToast({ title: '功能开发中', icon: 'none' })
   },
 
   clearStorage: function() {
     wx.showModal({
-      title: '确认清除',
-      content: '确定要清除所有缓存数据吗？此操作不可恢复。',
+      title: '清除缓存',
+      content: '确定清除所有缓存？购票记录将一并清除。',
       success: (res) => {
         if (res.confirm) {
-          wx.clearStorageSync();
-          wx.showToast({
-            title: '清除成功',
-            icon: 'success'
-          });
+          wx.clearStorageSync()
+          wx.showToast({ title: '已清除', icon: 'success' })
         }
       }
-    });
-  },
-
-  changeTheme: function() {
-    wx.showToast({
-      title: '功能开发中',
-      icon: 'none'
-    });
-  },
-
-  aboutApp: function() {
-    wx.showModal({
-      title: '关于个性化助手',
-      content: '个性化助手 v1.0\n为您提供便捷的生活服务和信息管理功能。',
-      showCancel: false
-    });
-  },
-
-  feedback: function() {
-    wx.navigateTo({
-      url: '/pages/feedback/feedback'
-    });
-  },
-
-  logout: function() {
-    wx.showModal({
-      title: '确认退出',
-      content: '确定要退出当前账号吗？',
-      success: (res) => {
-        if (res.confirm) {
-          // 清除用户信息
-          const app = getApp();
-          app.globalData.userInfo = null;
-          
-          // 返回首页
-          wx.reLaunch({
-            url: '/pages/index/index'
-          });
-        }
-      }
-    });
+    })
   }
-});
+})

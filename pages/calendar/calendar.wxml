@@ -1,4 +1,4 @@
-<!-- calendar.wxml -->
+<!-- calendar.wxml 我的行程 极简扁平 -->
 <view class="container">
   <view class="calendar-header">
     <text class="current-month">{{currentMonth}}</text>
@@ -20,17 +20,29 @@
   </view>
   
   <view class="days">
-    <block wx:for="{{days}}" wx:key="index">
-      <view class="day {{item.isCurrentMonth ? '' : 'other-month'}} {{item.isToday ? 'today' : ''}} {{item.hasEvent ? 'has-event' : ''}}" 
+    <block wx:for="{{days}}" wx:key="date">
+      <view class="day {{item.isCurrentMonth ? '' : 'other-month'}} {{item.isToday ? 'today' : ''}} {{item.hasTrip ? 'has-trip' : ''}} {{item.date === selectedDate ? 'selected' : ''}}" 
             bindtap="selectDay" 
-            data-date="{{item.date}}">
+            data-date="{{item.date}}"
+            hover-class="day-hover">
         <text class="day-text">{{item.day}}</text>
-        <view wx:if="{{item.hasEvent}}" class="event-indicator"></view>
       </view>
     </block>
   </view>
   
-  <view class="calendar-footer">
-    <button class="add-event-btn" bindtap="addEvent">添加日程</button>
+  <view class="trip-list" wx:if="{{selectedDateTrips.length > 0}}">
+    <text class="trip-list-title">{{selectedDate}}</text>
+    <view class="trip-item" wx:for="{{selectedDateTrips}}" wx:key="id">
+      <view class="trip-route">
+        <text class="trip-station">{{item.from}}</text>
+        <text class="trip-arrow">→</text>
+        <text class="trip-station">{{item.to}}</text>
+      </view>
+      <text class="trip-train">{{item.trainNo}} {{item.seatType}}</text>
+    </view>
+  </view>
+  
+  <view class="empty-trip" wx:elif="{{selectedDate}}">
+    <text class="empty-trip-text">该日无行程</text>
   </view>
 </view>

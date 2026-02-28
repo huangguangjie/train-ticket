@@ -1,40 +1,25 @@
-<!--index.wxml-->
+<!--index.wxml 火车票购票 极简扁平-->
 <view class="container">
-  <view class="welcome-section">
-    <text class="welcome-title">欢迎使用个性化助手</text>
-    <text class="welcome-subtitle">您的智能生活伙伴</text>
-  </view>
-  
-  <view class="feature-grid">
-    <view class="feature-card" bindtap="goToProfile">
-      <image class="feature-icon" src="/images/profile.png"></image>
-      <text class="feature-name">个人信息</text>
+  <view class="search-card">
+    <view class="search-row">
+      <view class="station-box">
+        <text class="station-label">出发</text>
+        <text class="station-value">{{fromStation || '选择'}}</text>
+      </view>
+      <view class="swap-icon" bindtap="swapStations">⇄</view>
+      <view class="station-box">
+        <text class="station-label">到达</text>
+        <text class="station-value">{{toStation || '选择'}}</text>
+      </view>
     </view>
     
-    <view class="feature-card" bindtap="goToCalendar">
-      <image class="feature-icon" src="/images/calendar.png"></image>
-      <text class="feature-name">日程管理</text>
+    <view class="search-row date-row">
+      <text class="date-label">日期</text>
+      <picker mode="date" value="{{travelDate}}" start="{{today}}" bindchange="onDateChange">
+        <text class="date-value">{{travelDate || '选择'}}</text>
+      </picker>
     </view>
     
-    <view class="feature-card" bindtap="goToSettings">
-      <image class="feature-icon" src="/images/settings.png"></image>
-      <text class="feature-name">设置中心</text>
-    </view>
-    
-    <view class="feature-card" bindtap="goToLogs">
-      <image class="feature-icon" src="/images/logs.png"></image>
-      <text class="feature-name">访问记录</text>
-    </view>
+    <button class="search-btn" bindtap="searchTicket">查询</button>
   </view>
-  
-  <view class="quote-section">
-    <text class="quote-text">{{dailyQuote}}</text>
-    <text class="quote-author">- 每日一言</text>
-  </view>
-  
-  <view class="userinfo" wx:if="{{hasUserInfo}}">
-    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" bindtap="goToProfile"></image>
-    <text class="userinfo-nickname" bindtap="goToProfile">{{userInfo.nickName}}</text>
-  </view>
-  <button class="login-btn" wx:else bindtap="getUserProfile">一键登录</button>
 </view>
