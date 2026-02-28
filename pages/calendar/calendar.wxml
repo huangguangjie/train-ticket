@@ -1,0 +1,36 @@
+<!-- calendar.wxml -->
+<view class="container">
+  <view class="calendar-header">
+    <text class="current-month">{{currentMonth}}</text>
+    <view class="nav-buttons">
+      <button class="nav-btn" bindtap="prevMonth">‹</button>
+      <button class="nav-btn today-btn" bindtap="goToToday">今天</button>
+      <button class="nav-btn" bindtap="nextMonth">›</button>
+    </view>
+  </view>
+  
+  <view class="weekdays">
+    <text class="weekday">日</text>
+    <text class="weekday">一</text>
+    <text class="weekday">二</text>
+    <text class="weekday">三</text>
+    <text class="weekday">四</text>
+    <text class="weekday">五</text>
+    <text class="weekday">六</text>
+  </view>
+  
+  <view class="days">
+    <block wx:for="{{days}}" wx:key="index">
+      <view class="day {{item.isCurrentMonth ? '' : 'other-month'}} {{item.isToday ? 'today' : ''}} {{item.hasEvent ? 'has-event' : ''}}" 
+            bindtap="selectDay" 
+            data-date="{{item.date}}">
+        <text class="day-text">{{item.day}}</text>
+        <view wx:if="{{item.hasEvent}}" class="event-indicator"></view>
+      </view>
+    </block>
+  </view>
+  
+  <view class="calendar-footer">
+    <button class="add-event-btn" bindtap="addEvent">添加日程</button>
+  </view>
+</view>

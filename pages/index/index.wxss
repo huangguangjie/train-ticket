@@ -1,22 +1,124 @@
 /**index.wxss**/
 
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40rpx 20rpx;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.welcome-section {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 60rpx;
+  margin-top: 40rpx;
+}
+
+.welcome-title {
+  display: block;
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #4A90E2;
+  margin-bottom: 20rpx;
+}
+
+.welcome-subtitle {
+  display: block;
+  font-size: 28rpx;
+  color: #7D7D7D;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30rpx;
+  width: 100%;
+  max-width: 750rpx;
+  margin-bottom: 60rpx;
+}
+
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 20rpx;
+  padding: 40rpx 20rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:active {
+  transform: scale(0.95);
+}
+
+.feature-icon {
+  width: 80rpx;
+  height: 80rpx;
+  margin-bottom: 20rpx;
+}
+
+.feature-name {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.quote-section {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 60rpx;
+  padding: 30rpx;
+  background-color: white;
+  border-radius: 20rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0,0,0,0.1);
+}
+
+.quote-text {
+  display: block;
+  font-size: 32rpx;
+  color: #555;
+  margin-bottom: 10rpx;
+  font-style: italic;
+}
+
+.quote-author {
+  display: block;
+  font-size: 24rpx;
+  color: #888;
+}
+
 .userinfo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .userinfo-avatar {
-    width: 128rpx;
-    height: 128rpx;
-    margin: 20rpx;
-    border-radius: 50%;
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+  border: 6rpx solid #4A90E2;
 }
 
 .userinfo-nickname {
-    color: #aaa;
+  color: #333;
+  font-size: 32rpx;
+  font-weight: bold;
 }
 
-.usermotto {
-    margin-top: 200px;
+.login-btn {
+  margin: 40rpx 0;
+  background-color: #4A90E2;
+  color: white;
+  border-radius: 50rpx;
+  padding: 20rpx 60rpx;
+  border: none;
+  font-size: 32rpx;
 }

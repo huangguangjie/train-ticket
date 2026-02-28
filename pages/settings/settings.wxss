@@ -1,0 +1,61 @@
+/** settings.wxss **/
+
+.container {
+  padding: 40rpx 20rpx;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+}
+
+.setting-section {
+  background-color: white;
+  border-radius: 20rpx;
+  margin-bottom: 40rpx;
+  overflow: hidden;
+  box-shadow: 0 8rpx 24rpx rgba(0,0,0,0.1);
+}
+
+.setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.setting-item:last-child {
+  border-bottom: none;
+}
+
+.setting-text {
+  font-size: 30rpx;
+  color: #333;
+}
+
+.arrow {
+  font-size: 30rpx;
+  color: #ccc;
+}
+
+.switch-item {
+  padding-right: 20rpx;
+}
+
+.switch {
+  transform: scale(0.8);
+}
+
+.logout-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 60rpx;
+}
+
+.logout-btn {
+  width: 80%;
+  background-color: #FF6B6B;
+  color: white;
+  border-radius: 50rpx;
+  padding: 20rpx;
+  border: none;
+  font-size: 32rpx;
+}

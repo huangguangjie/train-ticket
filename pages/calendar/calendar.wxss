@@ -1,0 +1,131 @@
+/** calendar.wxss **/
+
+.container {
+  padding: 40rpx 20rpx;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+
+.current-month {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.nav-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.nav-btn {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background-color: #4A90E2;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28rpx;
+  border: none;
+  margin: 0 10rpx;
+}
+
+.today-btn {
+  width: auto;
+  padding: 10rpx 20rpx;
+  border-radius: 30rpx;
+  font-size: 24rpx;
+}
+
+.weekdays {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+
+.weekday {
+  flex: 1;
+  text-align: center;
+  font-size: 28rpx;
+  color: #666;
+  font-weight: bold;
+}
+
+.days {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.day {
+  width: calc(100%/7 - 10rpx);
+  height: 80rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: 10rpx;
+}
+
+.day-text {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.other-month {
+  color: #ccc;
+}
+
+.today {
+  background-color: #4A90E2;
+  color: white;
+  border-radius: 50%;
+}
+
+.today .day-text {
+  color: white;
+}
+
+.has-event::after {
+  content: '';
+  position: absolute;
+  bottom: 10rpx;
+  width: 8rpx;
+  height: 8rpx;
+  background-color: #FF6B6B;
+  border-radius: 50%;
+}
+
+.event-indicator {
+  width: 8rpx;
+  height: 8rpx;
+  background-color: #FF6B6B;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 10rpx;
+}
+
+.calendar-footer {
+  margin-top: 60rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.add-event-btn {
+  width: 80%;
+  background-color: #4A90E2;
+  color: white;
+  border-radius: 50rpx;
+  padding: 20rpx;
+  border: none;
+  font-size: 32rpx;
+}
