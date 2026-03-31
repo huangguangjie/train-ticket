@@ -1,54 +1,64 @@
-//index.js
-//获取应用实例
-const app = getApp()
-
+//index.js 火车票购票
 Page({
-    data: {
-        motto: 'Hello World',
-        userInfo: {},
-        hasUserInfo: false,
-        canIUse: wx.canIUse('button.open-type.getUserInfo')
-    },
-    //事件处理函数
-    bindViewTap: function() {
-        wx.navigateTo({
-            url: '../logs/logs'
-        })
-    },
-    onLoad: function() {
-        if (app.globalData.userInfo) {
-            this.setData({
-                userInfo: app.globalData.userInfo,
-                hasUserInfo: true
-            })
-        } else if (this.data.canIUse) {
-            // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-            // 所以此处加入 callback 以防止这种情况
-            app.userInfoReadyCallback = res => {
-                this.setData({
-                    userInfo: res.userInfo,
-                    hasUserInfo: true
-                })
-            }
-        } else {
-            // 在没有 open-type=getUserInfo 版本的兼容处理
-            wx.getUserInfo({
-                success: res => {
-                    app.globalData.userInfo = res.userInfo
-                    this.setData({
-                        userInfo: res.userInfo,
-                        hasUserInfo: true
-                    })
-                }
-            })
-        }
-    },
-    getUserInfo: function(e) {
-        console.log(e)
-        app.globalData.userInfo = e.detail.userInfo
-        this.setData({
-            userInfo: e.detail.userInfo,
-            hasUserInfo: true
-        })
+  data: {
+    fromStation: '北京南',
+    toStation: '上海虹桥',
+    travelDate: '',
+    today: ''
+  },
+
+  onShow: function() {
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({ selected: 0 })
     }
+  },
+
+  onLoad: function() {
+    const today = new Date()
+    const todayStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`
+    this.setData({
+      travelDate: todayStr,
+      today: todayStr
+    })
+  },
+
+  swapStations: function() {
+    const { fromStation, toStation } = this.data
+    this.setData({
+      fromStation: toStation,
+      toStation: fromStation
+    })
+  },
+
+  onDateChange: function(e) {
+    this.setData({
+      travelDate: e.detail.value
+    })
+  },
+
+  searchTicket: function() {
+    const { fromStation, toStation, travelDate } = this.data
+    if (!fromStation || !toStation) {
+      wx.showToast({ title: '请选择出发站和到达站', icon: 'none' })
+      return
+    }
+    if (!travelDate) {
+      wx.showToast({ title: '请选择出发日期', icon: 'none' })
+      return
+    }
+    wx.showToast({ title: '查询中...', icon: 'loading' })
+    setTimeout(() => {
+      wx.showToast({ title: '演示版暂不支持实时查询', icon: 'none' })
+    }, 800)
+  },
+
+  goToProfile: function() {
+    wx.switchTab({ url: '/pages/profile/profile' })
+  },
+  goToCalendar: function() {
+    wx.switchTab({ url: '/pages/calendar/calendar' })
+  },
+  goToSettings: function() {
+    wx.switchTab({ url: '/pages/settings/settings' })
+  }
 })

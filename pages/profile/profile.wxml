@@ -1,0 +1,31 @@
+<!--profile.wxml 我的订单 极简扁平-->
+<view class="container">
+  <view class="order-header">
+    <text class="header-title">购票记录</text>
+    <text class="order-count">{{orders.length}} 张</text>
+  </view>
+  
+  <view class="order-list" wx:if="{{orders.length > 0}}">
+    <view class="order-card" wx:for="{{orders}}" wx:key="id" bindtap="viewOrderDetail" data-id="{{item.id}}">
+      <view class="order-route">
+        <text class="station from">{{item.from}}</text>
+        <text class="arrow">→</text>
+        <text class="station to">{{item.to}}</text>
+      </view>
+      <view class="order-meta">
+        <text class="meta-item">{{item.trainNo}}</text>
+        <text class="meta-item">{{item.date}}</text>
+        <text class="meta-item">{{item.seatType}}</text>
+      </view>
+      <view class="order-footer">
+        <text class="passengers">{{item.passengers.join('、')}}</text>
+        <text class="price">¥{{item.price}}</text>
+      </view>
+    </view>
+  </view>
+  
+  <view class="empty-state" wx:else>
+    <text class="empty-text">暂无购票记录</text>
+    <button class="go-buy-btn" bindtap="goToIndex">去购票</button>
+  </view>
+</view>

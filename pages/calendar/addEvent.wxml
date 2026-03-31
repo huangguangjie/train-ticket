@@ -1,0 +1,34 @@
+<!-- addEvent.wxml -->
+<view class="container">
+  <view class="input-group">
+    <text class="label">日期</text>
+    <input class="input" type="text" value="{{date}}" disabled />
+  </view>
+  
+  <view class="input-group">
+    <text class="label">事件标题</text>
+    <input class="input" type="text" placeholder="请输入事件标题" value="{{title}}" bindinput="onTitleInput" />
+  </view>
+  
+  <view class="input-group">
+    <text class="label">事件描述</text>
+    <textarea class="textarea" placeholder="请输入事件描述" value="{{description}}" bindinput="onDescriptionInput" />
+  </view>
+  
+  <view class="time-group">
+    <view class="input-group">
+      <text class="label">开始时间</text>
+      <input class="input" type="time" value="{{startTime}}" bindchange="onStartTimeChange" />
+    </view>
+    
+    <view class="input-group">
+      <text class="label">结束时间</text>
+      <input class="input" type="time" value="{{endTime}}" bindchange="onEndTimeChange" />
+    </view>
+  </view>
+  
+  <view class="button-group">
+    <button class="save-btn" bindtap="saveEvent">保存</button>
+    <button class="cancel-btn" bindtap="cancel">取消</button>
+  </view>
+</view>

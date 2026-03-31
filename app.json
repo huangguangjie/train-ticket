@@ -1,13 +1,1 @@
-{
-    "pages": [
-        "pages/index/index",
-        "pages/logs/logs"
-    ],
-    "window":
-    {
-        "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#fff",
-        "navigationBarTitleText": "WeChat",
-        "navigationBarTextStyle": "black"
-    }
-}
+{"pages":["pages/index/index","pages/logs/logs","pages/profile/profile","pages/calendar/calendar","pages/settings/settings"],"window":{"backgroundTextStyle":"dark","navigationBarBackgroundColor":"#c41e3a","navigationBarTitleText":"火车票","navigationBarTextStyle":"white"},"tabBar":{"custom":true,"color":"#7A7E83","selectedColor":"#4A90E2","borderStyle":"black","backgroundColor":"#ffffff","list":[{"pagePath":"pages/index/index","text":"购票"},{"pagePath":"pages/profile/profile","text":"订单"},{"pagePath":"pages/calendar/calendar","text":"行程"},{"pagePath":"pages/settings/settings","text":"设置"}]}}

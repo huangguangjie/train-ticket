@@ -1,0 +1,188 @@
+/** calendar.wxss 极简扁平 **/
+
+.container {
+  min-height: 100vh;
+  padding: 48rpx 32rpx 140rpx;
+  box-sizing: border-box;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 48rpx;
+}
+
+.current-month {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+}
+
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.nav-btn {
+  width: 56rpx;
+  height: 56rpx;
+  background: #fff;
+  color: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28rpx;
+  border: 1rpx solid #eee;
+  padding: 0;
+}
+
+.today-btn {
+  width: auto;
+  padding: 0 24rpx;
+  font-size: 24rpx;
+}
+
+.weekdays {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24rpx;
+}
+
+.weekday {
+  flex: 1;
+  text-align: center;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.days {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.day {
+  width: calc(100%/7 - 8rpx);
+  height: 72rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: 12rpx;
+  border: 2rpx solid transparent;
+  box-sizing: border-box;
+}
+
+.day-hover {
+  background: rgba(196, 30, 58, 0.1);
+}
+
+.day.today.day-hover {
+  background: #b01a32;
+}
+
+.day.selected {
+  border-color: #c41e3a;
+}
+
+.day.selected.today {
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+.day.selected.today .day-text {
+  color: #fff;
+}
+
+.day-text {
+  font-size: 26rpx;
+  font-weight: 500;
+  color: #333;
+}
+
+.other-month .day-text {
+  color: #bbb;
+  font-weight: 400;
+}
+
+.today {
+  background: #c41e3a;
+}
+
+.today .day-text {
+  color: #fff;
+  font-weight: 500;
+}
+
+.day.selected:not(.today) {
+  background: rgba(196, 30, 58, 0.08);
+}
+
+.day.selected:not(.today) .day-text {
+  color: #c41e3a;
+  font-weight: 600;
+}
+
+.has-trip::after {
+  content: '';
+  position: absolute;
+  bottom: 8rpx;
+  width: 6rpx;
+  height: 6rpx;
+  background: #c41e3a;
+  border-radius: 50%;
+}
+
+.trip-list {
+  margin-top: 48rpx;
+  background: #fff;
+  padding: 40rpx 36rpx;
+}
+
+.trip-list-title {
+  display: block;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 32rpx;
+}
+
+.trip-item {
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #eee;
+}
+
+.trip-item:last-child {
+  border-bottom: none;
+}
+
+.trip-route {
+  margin-bottom: 8rpx;
+}
+
+.trip-station {
+  font-size: 28rpx;
+  color: #111;
+}
+
+.trip-arrow {
+  margin: 0 8rpx;
+  color: #999;
+  font-size: 24rpx;
+}
+
+.trip-train {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.empty-trip {
+  margin-top: 48rpx;
+  text-align: center;
+}
+
+.empty-trip-text {
+  font-size: 26rpx;
+  color: #999;
+}

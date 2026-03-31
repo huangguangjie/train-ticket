@@ -1,13 +1,25 @@
-<!--index.wxml-->
+<!--index.wxml 火车票购票 极简扁平-->
 <view class="container">
-    <view class="userinfo">
-        <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-        <block wx:else>
-            <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-            <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-        </block>
+  <view class="search-card">
+    <view class="search-row">
+      <view class="station-box">
+        <text class="station-label">出发</text>
+        <text class="station-value">{{fromStation || '选择'}}</text>
+      </view>
+      <view class="swap-icon" bindtap="swapStations">⇄</view>
+      <view class="station-box">
+        <text class="station-label">到达</text>
+        <text class="station-value">{{toStation || '选择'}}</text>
+      </view>
     </view>
-    <view class="usermotto">
-        <text class="user-motto">{{motto}}</text>
+    
+    <view class="search-row date-row">
+      <text class="date-label">日期</text>
+      <picker mode="date" value="{{travelDate}}" start="{{today}}" bindchange="onDateChange">
+        <text class="date-value">{{travelDate || '选择'}}</text>
+      </picker>
     </view>
+    
+    <button class="search-btn" bindtap="searchTicket">查询</button>
+  </view>
 </view>

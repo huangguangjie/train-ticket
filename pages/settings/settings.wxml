@@ -1,0 +1,24 @@
+<!-- settings.wxml 极简扁平 -->
+<view class="container">
+  <view class="setting-section">
+    <view class="setting-item" bindtap="goToPassengers">
+      <text class="setting-text">常用乘客</text>
+      <text class="arrow">›</text>
+    </view>
+    <view class="setting-item" bindtap="clearStorage">
+      <text class="setting-text">清除缓存</text>
+      <text class="arrow">›</text>
+    </view>
+  </view>
+  
+  <view class="setting-section">
+    <view class="setting-item switch-item">
+      <text class="setting-text">购票提醒</text>
+      <switch class="switch" color="#c41e3a" checked="{{enableNotification}}" bindchange="toggleNotification" />
+    </view>
+    <view class="setting-item switch-item">
+      <text class="setting-text">行程提醒</text>
+      <switch class="switch" color="#c41e3a" checked="{{tripReminder}}" bindchange="toggleTripReminder" />
+    </view>
+  </view>
+</view>
